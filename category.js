@@ -10,7 +10,9 @@ const handleCategory = async () => {
     const div = document.createElement("div");
     div.innerHTML = `
           
-          <a onclick="handleLoadCategory('${category.category_id}')" class="tab">${category.category}</a>
+         <div>
+         <h1 onclick="handleLoadCategory('${category.category_id}')" class="tab btn btn-accent hover:bg-red-500 hover:text-white border-none ">${category.category}</h1>
+         </div>
           `;
     tabContainer.appendChild(div);
   });
@@ -24,18 +26,17 @@ const handleLoadCategory = async (category_id) => {
   const data = await response.json();
   console.log(data.data);
 
-  // data?.data?.forEach((category)=>{
-  //     console.log(category)
-  // })
-
   const cardContainer = document.getElementById("card-container");
+
   cardContainer.innerHTML = "";
 
   data.data?.forEach((videos) => {
     console.log(videos.authors[0]);
+    const time = parseFloat(videos.others.posted_date);
+    console.log(time);
     const div = document.createElement("div");
     div.innerHTML = `
-          <div class="card w-96 bg-base-100 shadow-xl">
+          <div class="card bg-base-100">
           <figure>
             <img
               src=${videos?.thumbnail}
@@ -47,13 +48,9 @@ const handleLoadCategory = async (category_id) => {
             </h2>
             
             <h3> totoal viws: ${
-              videos.others.views ? videos.others.views : "no vviews"
+              videos.others.views ? videos.others.views : "no views"
             }</h3>
-            <h3> totoal viws: ${
-              videos.others.posted_date
-                ? videos.others.posted_date
-                : "no vviews"
-            }</h3>
+            <h3> Time: ${time ? convertAndDisplayPostedDate(time) : " "}</h3>
 
             <div class="card-footer flex justify-between mt-8">
               <div class="flex">
@@ -67,7 +64,7 @@ const handleLoadCategory = async (category_id) => {
                   </div>
                 </div>
                 <div>
-                  <h6>${videos.authors[0]?.profile_name}</h6>              
+                  <h6>${videos.authors[0]?.profile_name}</h6>            
                 </div>
               </div>
               
@@ -80,5 +77,20 @@ const handleLoadCategory = async (category_id) => {
     cardContainer.appendChild(div);
   });
 };
+
+function convertAndDisplayPostedDate(apiData) {
+  const milliseconds = parseInt(apiData); // Convert to milliseconds
+  const postedDate = new Date(milliseconds);
+
+  const hours = postedDate.getHours();
+  const minutes = postedDate.getMinutes();
+
+  return (formattedPostedTime = `${hours} hours :${minutes} min`);
+
+  // Display the converted time
+  // console.log(`Posted Time: ${formattedPostedTime}`);
+}
+
+
 
 handleCategory();

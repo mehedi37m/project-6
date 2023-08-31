@@ -16,54 +16,51 @@
   </head>
   <body>
     <!-- navbar  -->
-    <section>
-      <div class="navbar bg-base-100">
-        <div class="navbar-start">
-          <div class="dropdown">
-            <label tabindex="0" class="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabindex="0"
-              class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-            <li><a>Short</a></li>
-            </ul>
-          </div>
-          <a class="btn btn-ghost normal-case text-xl">PH Tube</a>
+    <section class="container mx-auto my-12">
+     
+      <div class="flex justify-between">
+
+        <div>
+          <img src="./image/Logo.png" alt="">
         </div>
-        <div class="navbar-center hidden lg:flex">
-          <ul class="menu menu-horizontal px-1">
-            <li><a>Short</a></li>
-          </ul>
+        <div>
+          <button id="sort" class="btn btn-active btn-accent">Short by view</button>
         </div>
-        <div class="navbar-end">
-          <a class="btn">Blog</a>
+        <div>
+          <button class="btn btn-error">Blog</button>
         </div>
       </div>
+
     </section>
+    <div class=" container mx-auto mb-10 border">
+
+    </div>
+
+
+
+<div class="container flex " >
+
+
+  <!-- <a onclick="handleLoadCategory('${category.category_id}')" class="tab btn btn-accent hover:bg-red-500 hover:text-white border-none ">hello</a>
+  <a onclick="handleLoadCategory('${category.category_id}')" class="tab">hello</a>
+  <a onclick="handleLoadCategory('${category.category_id}')" class="tab">hello</a>
+  <a onclick="handleLoadCategory('${category.category_id}')" class="tab">hello</a> -->
+
+  
+  
+</div>
+
+
+
 
     <!-- section category -->
     <section>
-      <div id="category_id"></div>
+      <div id="category_id" class="flex justify-center gap-3"></div>
     </section>
 
     <!-- section card -->
-    <section>
-      <div id="card-container"></div>
+    <section class="container mx-auto">
+      <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 my-12"></div>
     </section>
 
     <!-- add javascript  -->
