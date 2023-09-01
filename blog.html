@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+<body class="container mx-auto my-12">
+    <div class="collapse collapse-arrow bg-pink-400 my-5">
+        <input type="radio" name="my-accordion-2" checked="checked" /> 
+        <div class="collapse-title text-xl font-medium">
+            Discuss the scope of var, let, and const
+        </div>
+        <div class="collapse-content"> 
+          <p class="my-3">var Scope:
+
+            Function Scope: Variables declared with var are function-scoped, meaning they are accessible within the function in which they are declared. They are not limited by block boundaries (e.g., if statements or loops) and can be accessed throughout the entire function.
+            Global Scope: If a var variable is declared outside of any function, it becomes a global variable and is accessible throughout the entire script.</p>
+            <p class="my-5">let Scope:
+
+                Block Scope: Variables declared with let are block-scoped, which means they are accessible only within the nearest enclosing block (a pair of curly braces {}), such as an if statement or a loop. They are not accessible outside of that block.
+                Global Scope: let variables declared at the top level (outside of any function) are not added as properties to the global object and are only accessible in the global scope.</p>
+
+                <p>const Scope:
+
+                    Block Scope: Variables declared with const are also block-scoped and follow the same block scope rules as let. They are only accessible within the nearest enclosing block and not outside of it.
+                    Global Scope: Like let, const variables declared at the top level are not added as properties to the global object and are only accessible in the global scope.</p>
+        </div>
+      </div>
+      <div class="collapse collapse-arrow bg-sky-200 my-5">
+        <input type="radio" name="my-accordion-2" /> 
+        <div class="collapse-title text-xl font-medium">
+            Tell us the use cases of null and undefined
+        </div>
+        <div class="collapse-content"> 
+          <p class="my-8">null: <br>
+
+            Intentional Absence of Value: null is often used to indicate the intentional absence of any object value or a value that is explicitly set to nothing. It represents the idea that there is no value or object assigned to a variable or property. <br>
+            Use null when you want to explicitly indicate the absence of a value or when you want to release references to objects.</p>
+            <p>undefined: <br>
+
+                Default Initial Value: Variables declared but not initialized are assigned the value undefined by default. It represents the absence of any value assignment. This is typically the initial state of function parameters and variables. <br>
+                Use undefined as the default value for uninitialized variables or function parameters and when you want to check for the absence of properties or function return values.</p>
+        </div>
+      </div>
+      <div class="collapse collapse-arrow bg-amber-200">
+        <input type="radio" name="my-accordion-2" /> 
+        <div class="collapse-title text-xl font-medium">
+            What do you mean by REST API?
+        </div>
+        <div class="collapse-content"> 
+          <p class="my-8">REST API, which stands for Representational State Transfer Application Programming Interface, is a set of architectural principles and constraints for designing networked applications. It is an approach used in web services development to create scalable, stateless, and interoperable services that can be easily accessed over the internet. REST is not a specific technology but a set of conventions and best practices for building APIs.</p>
+
+          <p>REST APIs have become a widely adopted approach for building web services due to their simplicity, scalability, and compatibility with the HTTP protocol, making them suitable for a variety of applications and devices. They are commonly used in web and mobile app development to enable communication between clients and servers over the internet.</p>
+        </div>
+      </div>
 </body>
 </html>
