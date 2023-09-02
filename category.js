@@ -1,3 +1,6 @@
+
+
+
 const handleCategory = async () => {
   const response = await fetch(
     `https://openapi.programming-hero.com/api/videos/categories`
@@ -5,6 +8,8 @@ const handleCategory = async () => {
   const data = await response.json();
   // console.log(data.data);
   const tabContainer = document.getElementById("category_id");
+
+
 
   data?.data.forEach((category) => {
     const div = document.createElement("div");
@@ -19,46 +24,46 @@ const handleCategory = async () => {
 };
 
 const handleLoadCategory = async (category_id) => {
-  console.log(category_id);
+  // console.log(category_id);
+
   const response = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${category_id}`
   );
   const data = await response.json();
-  sortView(data);
-  // console.log(parseFloat(data.data[0].others.views));
-  // console.log(parseFloat(data.data[1].others.views));
 
   const cardContainer = document.getElementById("card-container");
 
   cardContainer.innerHTML = "";
 
+  const setImg = document.getElementById("set-img");
+  setImg.innerHTML = " ";
+
   if (data.data.length === 0) {
-    const setImg = document.getElementById("set-img");
-    setImg.innerHTML = " ";
-    const p = document.createElement("p");
-    p.innerHTML = `  <img src="./image/Icon.png" alt="">
+   
+    setImg.innerHTML = `  <img class = "text-center" src="./image/Icon.png" alt="">
    <h2 class="mt-5 text-4xl font-extrabold">Oops!! Sorry, There is no content here</h2>
    `;
-
-    setImg.appendChild(p);
+   
   } else {
     data.data?.forEach((videos) => {
-     
-      // console.log(videos)
-     
+      // console.log(videos.authors[0]?.verified);
 
       const time = parseFloat(videos.others.posted_date);
-      console.log(time);
+      // console.log(time);
       const div = document.createElement("div");
 
       div.innerHTML = `
-          <div class="card bg-base-100">
+          <div class="card bg-base-100 relative">
           <figure>
-            <img
+            <img class = " h-48 w-96"
               src=${videos?.thumbnail}
             />
           </figure>
-
+          <div class="text-white text-right absolute top-40 right-10 bg-black">
+          <h3 class = "w-30">${
+            time ? convertAndDisplayPostedDate(time) : " "
+          }</h3>
+          </div>
          <div class="card-body">
 
     <div class="flex gap-5">
@@ -80,16 +85,15 @@ const handleLoadCategory = async (category_id) => {
  
         <div class = "flex gap-2 justify-items-center">
          <h6>${videos.authors[0]?.profile_name}</h6> 
+        <p>
        
-         <i id="verified-id" class="fa-regular fa-circle-check mt-2 text-blue-600 ">${
-           videos.authors[0]?.verified === "true"
-             ? videos.authors[0]?.verified
-             : "no"
-         }</i>
+        </p>
+        <i class="fa-solid text-blue-600 fa-circle-check"> ${videos.authors[0]?.verified === true ? "yes" : "no"}</i>
+        
 
        </div>
        <h3> ${videos.others.views ? videos.others.views : "no views"} views</h3>
-      <h3> Time: ${time ? convertAndDisplayPostedDate(time) : " "}</h3>
+    
 
     </div>  
   </div>       
@@ -105,20 +109,36 @@ const handleLoadCategory = async (category_id) => {
   }
 };
 
-function convertAndDisplayPostedDate(apiData) {
-  const milliseconds = parseInt(apiData); // Convert to milliseconds
-  const postedDate = new Date(milliseconds);
+const convertAndDisplayPostedDate = (apiData) => {
+  let seconds = parseInt(apiData);
+  let hrs = parseInt(seconds / 3600);
+  let min = parseInt((seconds / 36000) * 60);
+  return `${hrs} hours ${min} min`;
+};
 
-  const hours = postedDate.getHours();
-  const minutes = postedDate.getMinutes();
 
-  return (formattedPostedTime = `${hours} hours :${minutes} min`);
-}
 
-function sortView(data) {
+const handleSort =async () =>{
+ 
+  const response = await fetch(
+    `https://openapi.programming-hero.com/api/videos/categories`
+  );
+  const data = await response.json();
+  
+  sortView(data);
+};
+
+  
+
+
+
+
+
+
+const sortView = (data) => {
   let data_1 = data[0];
   let data_2 = data[1];
- return data.data.sort((data_1, data_2) => {
+  return data.data.sort((data_1, data_2) => {
     data_1 = parseFloat(data_1.others.views);
     data_2 = parseFloat(data_2.others.views);
     if (data_1 > data_2) {
@@ -127,5 +147,6 @@ function sortView(data) {
       return 1;
     }
   });
-}
+};
+
 handleCategory();

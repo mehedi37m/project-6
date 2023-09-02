@@ -7,24 +7,26 @@
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+   
 </head>
-<body class="container mx-auto my-12">
+<body >
+  <section class="container mx-auto my-40">
     <div class="collapse collapse-arrow bg-pink-400 my-5">
         <input type="radio" name="my-accordion-2" checked="checked" /> 
         <div class="collapse-title text-xl font-medium">
             Discuss the scope of var, let, and const
         </div>
         <div class="collapse-content"> 
-          <p class="my-3">var Scope:
+          <p class="my-3">var Scope: <br>
 
             Function Scope: Variables declared with var are function-scoped, meaning they are accessible within the function in which they are declared. They are not limited by block boundaries (e.g., if statements or loops) and can be accessed throughout the entire function.
             Global Scope: If a var variable is declared outside of any function, it becomes a global variable and is accessible throughout the entire script.</p>
-            <p class="my-5">let Scope:
+            <p class="my-5">let Scope: <br>
 
                 Block Scope: Variables declared with let are block-scoped, which means they are accessible only within the nearest enclosing block (a pair of curly braces {}), such as an if statement or a loop. They are not accessible outside of that block.
                 Global Scope: let variables declared at the top level (outside of any function) are not added as properties to the global object and are only accessible in the global scope.</p>
 
-                <p>const Scope:
+                <p>const Scope: <br>
 
                     Block Scope: Variables declared with const are also block-scoped and follow the same block scope rules as let. They are only accessible within the nearest enclosing block and not outside of it.
                     Global Scope: Like let, const variables declared at the top level are not added as properties to the global object and are only accessible in the global scope.</p>
@@ -57,5 +59,8 @@
           <p>REST APIs have become a widely adopted approach for building web services due to their simplicity, scalability, and compatibility with the HTTP protocol, making them suitable for a variety of applications and devices. They are commonly used in web and mobile app development to enable communication between clients and servers over the internet.</p>
         </div>
       </div>
+    
+</section>
 </body>
+
 </html>

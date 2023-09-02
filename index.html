@@ -23,8 +23,9 @@
         <div>
           <img src="./image/Logo.png" alt="">
         </div>
-        <div>
-          <button id="sort" class="btn btn-active btn-accent">Short by view</button>
+        <div id="short_id">
+          <button onclick="handleSort()" class="btn btn-error ">Short by view</button>
+          
         </div>
         <div>
           <a href="./blog.html" class="btn btn-error">Blog</a>
@@ -42,7 +43,9 @@
 
     <!-- section category -->
     <section>
-      <div id="category_id" class="flex justify-center gap-3"></div>
+      <div id="category_id" class="flex justify-center gap-3">
+
+      </div>
     </section>
 
     <!-- section card -->
@@ -50,11 +53,21 @@
       <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 my-12"></div>
     </section>
 
-    <div id="set-img" class="container mx-auto text-center grid justify-items-center justify-center">
+    <div id="set-img" class=" container mx-auto text-center grid justify-items-center justify-center">
      
     </div>
+
+
+
+
+
+
+
+
+
     <!-- add javascript  -->
  
     <script src="./category.js"></script>
+    
   </body>
 </html>
